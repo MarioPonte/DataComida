@@ -1,4 +1,5 @@
 import React from 'react';
+import config from "../config.json";
 import styled, { createGlobalStyle } from "styled-components";
 import { Helmet } from 'react-helmet';
 import { HeaderStyle } from '../src/components/Header';
@@ -39,13 +40,33 @@ function Header(){
 }
 
 function Timeline(){
+    const categoryNames = Object.keys(config.foods);
     return (
         <TimelineStyle>
             <div className='welcomeMsg'>
-                <img className='profileImg' src="images/teresinha.jpg" alt="" />
-                <p>Bom Dia, <strong>Teresinha</strong></p>
+                <img className='profileImg' src={config.profiles[0].picture} alt="" />
+                <p>Bom Dia, <strong>{config.profiles[0].name}</strong></p>
                 <p>O que vai cozinhar hoje?</p>
             </div>
+
+            {categoryNames.map((categoryName) => {
+                const receiptCards = config.foods[categoryName];
+                return (
+                    <div className='foodSection' key={categoryName}>
+                        <h3>{categoryName}</h3>
+                        <div className='foodCard'>
+                            {receiptCards.map((food) => {
+                                return (
+                                    <a className='foodLink' key={food.title} href="https://infinitbility.com/how-to-get-key-and-value-from-json-object-in-javascript">
+                                        <img className='foodImg' src={food.thumb} alt="" />
+                                        <p>{food.title}</p>
+                                    </a>
+                                )
+                            })}
+                        </div>
+                    </div>
+                )
+            })}
         </TimelineStyle>
     )
 }

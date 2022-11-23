@@ -1,0 +1,33 @@
+{
+    "profiles": [
+        {
+            "name": "Teresinha",
+            "picture": "/images/teresinha.jpg"
+        },
+        {
+            "name": "Mário Ponte",
+            "picture": "https://github.com/MarioPonte.png"
+        }
+    ],
+    "foods": {
+        "Bolos": [
+            {
+                "title": "Bolo de Aniversário",
+                "url": "https://www.youtube.com/watch?v=QsqatJxAUtk",
+                "thumb": "/images/food/boloAnos.jpg"
+            },
+            {
+                "title": "Toucinho do Céu",
+                "url": "https://www.youtube.com/watch?v=QsqatJxAUtk",
+                "thumb": "/images/food/toucinhodoceu.jpg"
+            }
+        ],
+        "Peixes": [
+            {
+                "title": "Dourada",
+                "url": "https://www.youtube.com/watch?v=QsqatJxAUtk",
+                "thumb": "/images/food/dourada.jpg"
+            }
+        ]
+    }
+}
