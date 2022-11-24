@@ -57,7 +57,7 @@ function Timeline(){
                         <div className='foodCard'>
                             {receiptCards.map((food) => {
                                 return (
-                                    <a className='foodLink' key={food.title} href="https://infinitbility.com/how-to-get-key-and-value-from-json-object-in-javascript">
+                                    <a className='foodLink' key={food.title} href="/recipes">
                                         <img className='foodImg' src={food.thumb} alt="" />
                                         <p>{food.title}</p>
                                     </a>
