@@ -53,6 +53,7 @@ export default function Recipes(){
                 <title>DataComida</title>
             </Head>
             <Script src="https://kit.fontawesome.com/af5e23e73e.js" />
+            <script src="/copyRecipe.js" defer />
             <RecipesStyle>
                 <section className="recipesBanner"></section>
                 <section className="recipe">
@@ -79,7 +80,7 @@ export default function Recipes(){
                     </p>
                     <div>
                         <p id="teste">Teste cópia</p>
-                        <a id="btnCopy" className="receiptButtons" href="/"><i className="fa-regular fa-copy"></i> Copiar Receita</a>
+                        <a className="receiptButtons" href="/"><i className="fa-solid fa-print"></i> Copiar Receita</a>
                         <a className="receiptButtons" href="/"><i className="fa-solid fa-print"></i> Imprimir Receita</a>
                     </div>
                 </section>
