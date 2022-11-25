@@ -57,9 +57,9 @@ export default function Recipes(){
             <RecipesStyle>
                 <section className="recipesBanner"></section>
                 <section className="recipe">
-                    <h1 className="recipeTitle">Bolo de Aniversário</h1>
+                    <h1 id="recTitle" className="recipeTitle">Bolo de Aniversário</h1>
                     <span className="recipeTime"><i className="fa-solid fa-clock"></i> 1 Hora e 30 minutos</span>
-                    <h2>Ingredientes</h2>
+                    <h2 className="ingredientsTitle">Ingredientes</h2>
                     <ul className="ingredientsList">
                         <li>8 ovos</li>
                         <li>32 colheres de açucar</li>
@@ -80,7 +80,7 @@ export default function Recipes(){
                     </p>
                     <div>
                         <p id="teste">Teste cópia</p>
-                        <a className="receiptButtons" href="/"><i className="fa-solid fa-print"></i> Copiar Receita</a>
+                        <button id="copyBtn" className="copyButton receiptButtons"><i className="fa-solid fa-print"></i> Copiar Receita</button>
                         <a className="receiptButtons" href="/"><i className="fa-solid fa-print"></i> Imprimir Receita</a>
                     </div>
                 </section>
