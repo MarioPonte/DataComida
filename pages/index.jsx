@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 import { HeaderStyle } from '../src/components/Header';
 import { TimelineStyle } from '../src/components/Timeline';
 import { FooterStyle } from '../src/components/Footer';
+import supabase from './api/supabase';
 
 const GlobalStyle = createGlobalStyle`
     *{
@@ -15,6 +16,9 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export default function HomePage(){
+
+    console.log(supabase.from("foods").select("*"));
+
     return (
         <div>
             <Helmet>
