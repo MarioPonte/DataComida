@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import config from "../config.json";
 import styled, { createGlobalStyle } from "styled-components";
 import { Helmet } from 'react-helmet';
@@ -17,7 +17,31 @@ const GlobalStyle = createGlobalStyle`
 
 export default function HomePage(){
 
-    console.log(supabase.from("foods").select("*"));
+    const [fetchError, setFetchError] = useState(null);
+    const [foods, setFoods] = useState(null);
+
+    useEffect(() => {
+        const fetchFoods = async () => {
+            const { data, error} = await supabase
+                .from("foods")
+                .select("*")
+
+                if(error){
+                    setFetchError("Could not fetch the foods")
+                    setFoods(null)
+                    console.log(error)
+                }
+
+                if(data){
+                    setFoods(data)
+                    setFetchError(null)
+                    console.log(data)
+                }
+        }
+
+        fetchFoods()
+
+    }, [])
 
     return (
         <div>
