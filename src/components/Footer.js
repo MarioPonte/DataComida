@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const FooterStyle = styled.div`
-    background-color: #F8F8F8;
+    background-color: #FAFAFA;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     text-align: center;
     padding: 20px;
 `;

@@ -17,32 +17,6 @@ const GlobalStyle = createGlobalStyle`
 
 export default function HomePage(){
 
-    const [fetchError, setFetchError] = useState(null);
-    const [foods, setFoods] = useState(null);
-
-    useEffect(() => {
-        const fetchFoods = async () => {
-            const { data, error} = await supabase
-                .from("foods")
-                .select("*")
-
-                if(error){
-                    setFetchError("Could not fetch the foods")
-                    setFoods(null)
-                    console.log(error)
-                }
-
-                if(data){
-                    setFoods(data)
-                    setFetchError(null)
-                    console.log(data)
-                }
-        }
-
-        fetchFoods()
-
-    }, [])
-
     return (
         <div>
             <Helmet>
@@ -68,14 +42,57 @@ function Header(){
 }
 
 function Timeline(){
+
+    const [fetchError, setFetchError] = useState(null);
+    const [foods, setFoods] = useState(null);
+
+    useEffect(() => {
+        const fetchFoods = async () => {
+            const { data, error} = await supabase
+                .from("foods")
+                .select("*")
+
+                if(error){
+                    setFetchError("Could not fetch the foods")
+                    setFoods(null)
+                    console.log(error)
+                }
+
+                if(data){
+                    setFoods(data)
+                    setFetchError(null)
+                }
+        }
+
+        fetchFoods()
+
+    }, [])
+
+
+
+
+
     const categoryNames = Object.keys(config.foods);
     return (
         <TimelineStyle>
+
             <div className='welcomeMsg'>
                 <img className='profileImg' src={config.profiles[0].picture} alt="" />
                 <p>Bom Dia, <strong>{config.profiles[0].name}</strong></p>
                 <p>O que vai cozinhar hoje?</p>
             </div>
+
+            {fetchError && (<p>{fetchError}</p>)}
+            {foods && (
+                <div>
+                    {foods.map(food => (
+                        <div key={food.name}>
+                            <h3>{food.name}</h3>
+                            <p>{food.image}</p>
+                        </div>
+                    ))}
+                </div>
+            )}
 
             {categoryNames.map((categoryName) => {
                 const receiptCards = config.foods[categoryName];
