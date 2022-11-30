@@ -6,6 +6,7 @@ import { HeaderStyle } from '../src/components/Header';
 import { TimelineStyle } from '../src/components/Timeline';
 import { FooterStyle } from '../src/components/Footer';
 import supabase from './api/supabase';
+import { foodService } from "./api/supabase";
 
 const GlobalStyle = createGlobalStyle`
     *{
@@ -17,6 +18,22 @@ const GlobalStyle = createGlobalStyle`
 
 export default function HomePage(){
 
+    const service = foodService();
+    const [categories, setCategories] = React.useState({});
+
+    React.useEffect(() => {
+        //console.log("useEffect");
+        service.getAllFoods()
+            .then((dados) => {
+                const newCategories = {...categories};
+                dados.data.forEach((food) => {
+                    if(!newCategories[food.category]) newCategories[food.category] = [];
+                    newCategories[food.category].push(food);
+                })
+                setCategories(newCategories);
+            });
+    }, []);
+
     return (
         <div>
             <Helmet>
@@ -27,7 +44,7 @@ export default function HomePage(){
             </Helmet>
             <GlobalStyle />
             <Header />
-            <Timeline />
+            <Timeline categories={categories} />
             <Footer />
         </div>
     )
@@ -41,7 +58,7 @@ function Header(){
     )
 }
 
-function Timeline(){
+function Timeline({...props}){
 
     const [fetchError, setFetchError] = useState(null);
     const [foods, setFoods] = useState(null);
@@ -68,11 +85,7 @@ function Timeline(){
 
     }, [])
 
-
-
-
-
-    const categoryNames = Object.keys(config.foods);
+    const categoryNames = Object.keys(props.categories);
     return (
         <TimelineStyle>
 
@@ -82,33 +95,25 @@ function Timeline(){
                 <p>O que vai cozinhar hoje?</p>
             </div>
 
-            {fetchError && (<p>{fetchError}</p>)}
-            {foods && (
-                <div>
-                    {foods.map(food => (
-                        <div key={food.name}>
-                            <h3>{food.name}</h3>
-                            <p>{food.image}</p>
-                        </div>
-                    ))}
-                </div>
-            )}
-
             {categoryNames.map((categoryName) => {
-                const receiptCards = config.foods[categoryName];
+                const foods = props.categories[categoryName];
                 return (
                     <div className='foodSection' key={categoryName}>
                         <h3>{categoryName}</h3>
-                        <div className='foodCard'>
-                            {receiptCards.map((food) => {
-                                return (
-                                    <a className='foodLink' key={food.title} href="/recipes">
-                                        <img className='foodImg' src={food.thumb} alt="" />
-                                        <p>{food.title}</p>
+
+                        {fetchError && (<p>{fetchError}</p>)}
+                        {foods && (
+                            <div className='foodCard'>
+                                {foods.map(food => (
+                                    <a className='foodLink' key={food.name} href="/recipes">
+                                        <img className='foodImg' src={food.image} alt="" />
+                                        <p>{food.name}</p>
                                     </a>
-                                )
-                            })}
-                        </div>
+                                ))}
+                            </div>
+                        )}
+
+
                     </div>
                 )
             })}
