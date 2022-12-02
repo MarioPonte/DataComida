@@ -8,3 +8,13 @@ export const HeaderStyle = styled.div`
         margin: 8px;
     }
 `;
+
+export function Header(){
+    return (
+        <HeaderStyle>
+            <img className='logoImg' src="images/logo.png" alt="" />
+            <input type="text" />
+            <button>🔎</button>
+        </HeaderStyle>
+    )
+}

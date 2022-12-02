@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import config from "../config.json";
 import styled, { createGlobalStyle } from "styled-components";
 import { Helmet } from 'react-helmet';
-import { HeaderStyle } from '../src/components/Header';
+import { Header } from '../src/components/Header';
 import { TimelineStyle } from '../src/components/Timeline';
 import { FooterStyle } from '../src/components/Footer';
 import supabase from './api/supabase';
@@ -50,15 +50,14 @@ export default function HomePage(){
     )
 }
 
-function Header(){
-    return (
-        <HeaderStyle>
-            <img className='logoImg' src="images/logo.png" alt="" />
-        </HeaderStyle>
-    )
-}
-
 function Timeline({...props}){
+
+    // Welcome Message
+    var now = new Date();
+    var hour = now.getHours();
+    var welcomeMsg = "";
+
+    if(hour<12) welcomeMsg = "Bom dia"; else if(hour<=18) welcomeMsg = "Boa tarde"; else welcomeMsg = "Boa noite";
 
     const [fetchError, setFetchError] = useState(null);
     const [foods, setFoods] = useState(null);
@@ -91,7 +90,7 @@ function Timeline({...props}){
 
             <div className='welcomeMsg'>
                 <img className='profileImg' src={config.profiles[0].picture} alt="" />
-                <p>Bom Dia, <strong>{config.profiles[0].name}</strong></p>
+                <p>{welcomeMsg}, <strong>{config.profiles[0].name}</strong></p>
                 <p>O que vai cozinhar hoje?</p>
             </div>
 
