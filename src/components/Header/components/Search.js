@@ -1,18 +1,5 @@
-import styled from "styled-components";
-
-export const HeaderStyle = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 16px;
-    background-color: #FAFAFA;
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.12) 0px 2px 16px 0px;
-    .logoImg{
-        width: 50px;
-        margin: 8px;
-    }
-`;
+import React from "react";
+import styled from "styled-components"
 
 const StyledSearch = styled.div`
   display: flex;
@@ -50,14 +37,14 @@ const StyledSearch = styled.div`
   }
 `;
 
-export function Header(){
+export default function Search({ valorDoFiltro, setValorDoFiltro }) {
+    const valorDaBusca = valorDoFiltro;
+    const setValorDaBusca = setValorDoFiltro;
+
     return (
-        <HeaderStyle>
-            <img className='logoImg' src="images/logo.png" alt="" />
-            <StyledSearch>
-                <input type="text" />
+        <StyledSearch>
+                <input type="text" onChange={(e) => { setValorDaBusca(e.target.value); }} value={valorDaBusca} />
                 <button>🔎</button>
-            </StyledSearch>
-        </HeaderStyle>
+        </StyledSearch>
     )
 }

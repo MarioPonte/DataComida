@@ -7,6 +7,7 @@ import { TimelineStyle } from '../src/components/Timeline';
 import { FooterStyle } from '../src/components/Footer';
 import supabase from './api/supabase';
 import { foodService } from "./api/supabase";
+import Link from "next/link";
 
 const GlobalStyle = createGlobalStyle`
     *{
@@ -16,18 +17,19 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 
-export default function HomePage(){
+export default function HomePage() {
 
     const service = foodService();
+    const [valorDoFiltro, setValorDoFiltro] = React.useState("");
     const [categories, setCategories] = React.useState({});
 
     React.useEffect(() => {
         //console.log("useEffect");
         service.getAllFoods()
             .then((dados) => {
-                const newCategories = {...categories};
+                const newCategories = { ...categories };
                 dados.data.forEach((food) => {
-                    if(!newCategories[food.category]) newCategories[food.category] = [];
+                    if (!newCategories[food.category]) newCategories[food.category] = [];
                     newCategories[food.category].push(food);
                 })
                 setCategories(newCategories);
@@ -43,41 +45,41 @@ export default function HomePage(){
                 <title>DataComida</title>
             </Helmet>
             <GlobalStyle />
-            <Header />
-            <Timeline categories={categories} />
+            <Header valorDoFiltro={valorDoFiltro} setValorDoFiltro={setValorDoFiltro} />
+            <Timeline searchValue={valorDoFiltro} categories={categories} />
             <Footer />
         </div>
     )
 }
 
-function Timeline({...props}){
+function Timeline({ searchValue, ...props }) {
 
     // Welcome Message
     var now = new Date();
     var hour = now.getHours();
     var welcomeMsg = "";
 
-    if(hour<12) welcomeMsg = "Bom dia"; else if(hour<=18) welcomeMsg = "Boa tarde"; else welcomeMsg = "Boa noite";
+    if (hour < 12) welcomeMsg = "Bom dia"; else if (hour <= 18) welcomeMsg = "Boa tarde"; else welcomeMsg = "Boa noite";
 
     const [fetchError, setFetchError] = useState(null);
     const [foods, setFoods] = useState(null);
 
     useEffect(() => {
         const fetchFoods = async () => {
-            const { data, error} = await supabase
+            const { data, error } = await supabase
                 .from("foods")
                 .select("*")
 
-                if(error){
-                    setFetchError("Could not fetch the foods")
-                    setFoods(null)
-                    console.log(error)
-                }
+            if (error) {
+                setFetchError("Could not fetch the foods")
+                setFoods(null)
+                console.log(error)
+            }
 
-                if(data){
-                    setFoods(data)
-                    setFetchError(null)
-                }
+            if (data) {
+                setFoods(data)
+                setFetchError(null)
+            }
         }
 
         fetchFoods()
@@ -96,23 +98,29 @@ function Timeline({...props}){
 
             {categoryNames.map((categoryName) => {
                 const foods = props.categories[categoryName];
+                let countFoods = 0;
+
                 return (
                     <div className='foodSection' key={categoryName}>
                         <h3>{categoryName}</h3>
-
-                        {fetchError && (<p>{fetchError}</p>)}
-                        {foods && (
-                            <div className='foodCard'>
-                                {foods.map(food => (
-                                    <a className='foodLink' key={food.name} href="/recipes">
-                                        <img className='foodImg' src={food.image} alt="" />
-                                        <p>{food.name}</p>
-                                    </a>
-                                ))}
-                            </div>
-                        )}
-
-
+                        <div>
+                            {foods
+                                .filter((food) => {
+                                    const titleNormalized = food.name.toLowerCase();
+                                    const searchValueNormalized = searchValue.toLowerCase();
+                                    return titleNormalized.includes(searchValueNormalized)
+                                })
+                                .map((food) => {
+                                    countFoods = countFoods + 1;
+                                    return (
+                                        <Link className='foodLink' key={food.name} href="/recipes">
+                                            <img className='foodImg' src={food.image} alt="" />
+                                            <p>{food.name}</p>
+                                        </Link>
+                                    )
+                                })}
+                            {countFoods === 0 ? "Nenhuma comida encontrada" : ""}
+                        </div>
                     </div>
                 )
             })}
@@ -120,7 +128,7 @@ function Timeline({...props}){
     )
 }
 
-function Footer(){
+function Footer() {
     return (
         <FooterStyle>
             <p>© Todos os direitos reservados a Mário Ponte / DataComida</p>
