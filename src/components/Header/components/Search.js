@@ -7,14 +7,14 @@ const StyledSearch = styled.div`
   border: 1px solid ${({ theme }) => theme.borderBase};
   max-width: 425px;
   width: 100%;
-  border-radius: 100vw;
+  border-radius: 12px;
   overflow: hidden;
   
   input {
     width: 80%;
     padding: 4px 6px;
     border: none;
-    border-radius: 100vw 0vw 0vw 100vw;
+    border-radius: 10px 10px 10px 10px;
     outline: none;
     color: ${({ theme }) => theme.textColorBase};
     background-color: ${({ theme }) => theme.backgroundBase};
@@ -25,7 +25,7 @@ const StyledSearch = styled.div`
     border: none;
     background-color: ${({ theme }) => theme.backgroundLevel2};
     box-shadow: 0 1px 0 rgb(0 0 0 / 10%);
-    border-radius: 0vw 100vw 100vw 0vw;
+    border-radius: 0px 10px 10px 0px;
     border-left: 1px solid ${({ theme }) => theme.borderBase};
     width: 40px;
     height: 40px;
@@ -44,7 +44,7 @@ export default function Search({ valorDoFiltro, setValorDoFiltro }) {
     return (
         <StyledSearch>
                 <input type="text" onChange={(e) => { setValorDaBusca(e.target.value); }} value={valorDaBusca} />
-                <button>🔎</button>
+                <button><i className="fa-solid fa-magnifying-glass"></i></button>
         </StyledSearch>
     )
 }

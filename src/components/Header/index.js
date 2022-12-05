@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import DarkModeSwitch from "./components/DarkModeSwitch";
 import Search from "./components/Search";
 
 export const HeaderStyle = styled.div`
@@ -20,6 +21,7 @@ export function Header({ valorDoFiltro, setValorDoFiltro }){
         <HeaderStyle>
             <img className='logoImg' src="images/logo.png" alt="" />
             <Search valorDoFiltro={valorDoFiltro} setValorDoFiltro={setValorDoFiltro} />
+            <DarkModeSwitch />
         </HeaderStyle>
     )
 }
