@@ -6,18 +6,18 @@ import '../styles/globals.css';
 
 const theme = {
     light: {
-        backgroundBase: "#D5F0FF",
-        backgroundLevel1: "#E6F6FF",
-        backgroundLevel2: "#A5DFFF",
-        borderBase: "#A5DFFF",
-        textColorBase: "#001520",
+        backgroundBase: "#FFF9F9",
+        backgroundLevel1: "#FFF5F5",
+        backgroundLevel2: "#CB9688",
+        borderBase: "#67504D",
+        textColorBase: "#322624",
     },
     dark: {
         backgroundBase: "#322624",
         backgroundLevel1: "#67504D",
         backgroundLevel2: "#54403E",
         borderBase: "#CB9688",
-        textColorBase: "#FFBBA9",
+        textColorBase: "#FFDED5",
     }
 };
 
@@ -27,7 +27,7 @@ const theme = {
 
 function ProviderWrapper(props) {
     return (
-        <ColorModeProvider initialMode={"dark"} >
+        <ColorModeProvider initialMode={"light"} >
             {props.children}
         </ColorModeProvider>
     )

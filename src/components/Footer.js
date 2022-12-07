@@ -8,5 +8,8 @@ export const FooterStyle = styled.div`
     padding: 20px;
     .logoMario{
         width: 75px;
+        .colorLogo {
+            fill: ${({ theme }) => theme.textColorBase || "#222222"};
+        }
     }
 `;
