@@ -1,7 +1,8 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
+import { CSSReset } from "../src/components/CSSReset";
 import ColorModeProvider, { ColorModeContext } from "../src/components/Header/components/ColorMode";
-import Head from 'next/head';
+import '../styles/globals.css';
 
 const theme = {
     light: {
@@ -12,11 +13,11 @@ const theme = {
         textColorBase: "#001520",
     },
     dark: {
-        backgroundBase: "#001520",
-        backgroundLevel1: "#001C2C",
-        backgroundLevel2: "#002B43",
-        borderBase: "#002B43",
-        textColorBase: "#D5F0FF",
+        backgroundBase: "#322624",
+        backgroundLevel1: "#67504D",
+        backgroundLevel2: "#54403E",
+        borderBase: "#CB9688",
+        textColorBase: "#FFBBA9",
     }
 };
 
@@ -37,16 +38,18 @@ function Root({ Component, pageProps }) {
 
     return (
             <ThemeProvider theme={theme[contexto.mode]}>
+                <CSSReset />
 
                 <Component {...pageProps} />
             </ThemeProvider>
     )
 }
 
-export default function _App(props) {
+export default function App(props) {
     return (
         <ProviderWrapper>
             <Root {...props} />
         </ProviderWrapper>
     )
 };
+
