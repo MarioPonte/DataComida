@@ -3,6 +3,7 @@ import { ThemeProvider } from "styled-components";
 import { CSSReset } from "../src/components/CSSReset";
 import ColorModeProvider, { ColorModeContext } from "../src/components/Header/components/ColorMode";
 import '../styles/globals.css';
+import RegisterFood from "../src/components/RegisterFood";
 
 const theme = {
     light: {
@@ -41,6 +42,7 @@ function Root({ Component, pageProps }) {
                 <CSSReset />
 
                 <Component {...pageProps} />
+                <RegisterFood />
             </ThemeProvider>
     )
 }
