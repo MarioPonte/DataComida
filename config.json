@@ -11,16 +11,8 @@
     ],
     "foods": {
         "Bolos": [
-            {
-                "title": "Bolo de Aniversário",
-                "url": "https://www.youtube.com/watch?v=QsqatJxAUtk",
-                "thumb": "/images/food/boloAnos.jpg"
-            },
-            {
-                "title": "Toucinho do Céu",
-                "url": "https://www.youtube.com/watch?v=QsqatJxAUtk",
-                "thumb": "/images/food/toucinhodoceu.jpg"
-            }
+        ],
+        "Peixes": [
         ]
     }
 }

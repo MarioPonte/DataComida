@@ -24,25 +24,18 @@ function useForm(propsDoForm){
     };
 }
 
-const PROJECT_URL = "https://xmfivcpyskzxfpmfwyji.supabase.co";
-const PUBLIC_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhtZml2Y3B5c2t6eGZwbWZ3eWppIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjgxNzA1ODksImV4cCI6MTk4Mzc0NjU4OX0.xl3IqC1H1xE7rVSEUruF4HxxzFmNHAwFrPcaW7_MRks";
+const PROJECT_URL = "https://tqfqjugaasyxfpbfboaw.supabase.co";
+const PUBLIC_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRxZnFqdWdhYXN5eGZwYmZib2F3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2Njk1Nzk4MzAsImV4cCI6MTk4NTE1NTgzMH0.QzIUuSye0ph8vv0p3NhG_EkY0Ac0IM5SSou6IrZ1Bl0";
 const supabase = createClient(PROJECT_URL, PUBLIC_KEY);
-
-// get youtube thumbnail from video url
-function getThumbnail(url){
-    const youTubeId = url.replace(/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/, '$7');
-    const thumbnail = `https://img.youtube.com/vi/${youTubeId}/hqdefault.jpg`;
-    return thumbnail;
-}
 
 
 export default function RegisterFood() {
     const formCadastro = useForm({
-        initialValues: { titulo: "", url: ""}
+        initialValues: { titulo: "", imagem: "", detalhes: ""}
     });
     const [formVisivel, setFormVisivel] = React.useState(false);
 
-    const playlistNames = Object.keys(config.foods);
+    const categoryNames = Object.keys(config.foods);
 
     const router = useRouter();
 
@@ -58,11 +51,11 @@ export default function RegisterFood() {
                         //console.log(formCadastro.values);
 
                         // Contrato entre o nosso front e backend
-                        supabase.from("video").insert({
-                            title: formCadastro.values.titulo,
-                            url: formCadastro.values.url,
-                            thumb: getThumbnail(formCadastro.values.url),
-                            playlist: formCadastro.values.playlist,
+                        supabase.from("foods").insert({
+                            name: formCadastro.values.titulo,
+                            image: formCadastro.values.imagem,
+                            details: formCadastro.values.detalhes,
+                            category: formCadastro.values.categoria,
                         })
                         .then((insResponse) => {
                             console.log(insResponse);
@@ -80,26 +73,28 @@ export default function RegisterFood() {
                                 x
                             </button>
                             <input
-                                placeholder="Titulo do video"
+                                placeholder="Nome da receita"
                                 name="titulo"
                                 value={formCadastro.values.titulo}
                                 onChange={formCadastro.handleChange}
                                 required />
                             <input
-                                type="url"
-                                placeholder="URL"
-                                name="url"
-                                value={formCadastro.values.url}
+                                placeholder="Imagem"
+                                name="imagem"
+                                value={formCadastro.values.imagem}
                                 onChange={formCadastro.handleChange}
                                 required />
+                            
+                            <textarea name="detalhes" value={formCadastro.values.detalhes} onChange={formCadastro.handleChange} placeholder="Detalhes da receita" rows="4" cols="50">
+                            </textarea>
 
-                            <select name="playlist" defaultValue="" onChange={formCadastro.handleChange} required>
+                            <select name="categoria" defaultValue="" onChange={formCadastro.handleChange} required>
                                 <option value="" disabled>
-                                    Selecione uma playlist...
+                                    Selecione uma categoria...
                                 </option>
-                                {playlistNames.map((playlistName) => {
+                                {categoryNames.map((categoryName) => {
                                     return (
-                                        <option key={playlistName} value={playlistName}>{playlistName}</option>
+                                        <option key={categoryName} value={categoryName}>{categoryName}</option>
                                     )
                                 })}
                             </select>
@@ -107,8 +102,6 @@ export default function RegisterFood() {
                             <button type="submit">
                                 Cadastrar
                             </button>
-
-                            {formCadastro.values.url.length > 11 ? <> <img className="thumbPreview" src={getThumbnail(formCadastro.values.url)}  /> </>  : null }
                         </div>
                     </form>
                 )
