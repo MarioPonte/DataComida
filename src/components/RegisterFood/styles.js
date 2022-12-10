@@ -1,7 +1,14 @@
 import styled from "styled-components";
 
 export const StyledRegisterVideo = styled.div`
-  .add-video {
+  .foodModal{
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.12) 0px 2px 16px 0px;
+  }
+  hr {
+    margin-bottom: 16px;
+    border: 1px solid ${({ theme }) => theme.borderBase};
+  }
+  .add-food {
     width: 50px;
     height: 50px;
     font-size: 20px;
@@ -30,7 +37,7 @@ export const StyledRegisterVideo = styled.div`
     background-color: ${({ theme }) => theme.borderBase};
     padding: 8px 16px;
     border: none;
-    border-radius: 2px;
+    border-radius: 8px;
     cursor: pointer;
     color: ${({ theme }) => theme.backgroundLevel2};
   }
@@ -57,7 +64,7 @@ export const StyledRegisterVideo = styled.div`
     }
   }
   input {
-    border-radius: 2px;
+    border-radius: 8px;
     border: 1px solid ${({ theme }) => theme.borderBase};
     padding: 8px 10px;
     margin-bottom: 10px;
@@ -68,7 +75,7 @@ export const StyledRegisterVideo = styled.div`
     background-color: ${({ theme }) => theme.backgroundBase};
   }
   textarea {
-    border-radius: 2px;
+    border-radius: 8px;
     border: 1px solid ${({ theme }) => theme.borderBase};
     padding: 8px 10px;
     margin-bottom: 10px;
@@ -77,9 +84,10 @@ export const StyledRegisterVideo = styled.div`
     background-color: #f9f9f9;
     color: ${({ theme }) => theme.textColorBase};
     background-color: ${({ theme }) => theme.backgroundBase};
+    resize: vertical;
   }
   select {
-    border-radius: 2px;
+    border-radius: 8px;
     border: 1px solid ${({ theme }) => theme.borderBase};
     padding: 8px 10px;
     margin-bottom: 10px;

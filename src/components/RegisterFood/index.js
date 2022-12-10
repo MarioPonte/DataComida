@@ -41,8 +41,8 @@ export default function RegisterFood() {
 
     return (
         <StyledRegisterVideo>
-            <button className="add-video" onClick={() => { setFormVisivel(true) }}>
-                +
+            <button className="add-food" onClick={() => { setFormVisivel(true) }}>
+                <i className="fa-solid fa-plus"></i>
             </button>
             {formVisivel
                 ? (
@@ -68,25 +68,17 @@ export default function RegisterFood() {
                         setFormVisivel(false);
                         formCadastro.clearForm();
                     }}>
-                        <div>
+                        <div className="foodModal">
                             <button type="button" className="close-modal" onClick={() => { setFormVisivel(false) }}>
-                                x
+                                <i className="fa-solid fa-xmark"></i>
                             </button>
+                            <hr></hr>
                             <input
                                 placeholder="Nome da receita"
                                 name="titulo"
                                 value={formCadastro.values.titulo}
                                 onChange={formCadastro.handleChange}
                                 required />
-                            <input
-                                placeholder="Imagem"
-                                name="imagem"
-                                value={formCadastro.values.imagem}
-                                onChange={formCadastro.handleChange}
-                                required />
-                            
-                            <textarea name="detalhes" value={formCadastro.values.detalhes} onChange={formCadastro.handleChange} placeholder="Detalhes da receita" rows="4" cols="50">
-                            </textarea>
 
                             <select name="categoria" defaultValue="" onChange={formCadastro.handleChange} required>
                                 <option value="" disabled>
@@ -99,9 +91,21 @@ export default function RegisterFood() {
                                 })}
                             </select>
 
+                            <textarea required name="detalhes" value={formCadastro.values.detalhes} onChange={formCadastro.handleChange} placeholder="Detalhes da receita" rows="4" cols="50">
+                            </textarea>
+
+                            <input
+                                placeholder="Imagem"
+                                name="imagem"
+                                value={formCadastro.values.imagem}
+                                onChange={formCadastro.handleChange}
+                                required />
+
                             <button type="submit">
                                 Cadastrar
                             </button>
+
+                            {formCadastro.values.imagem.length > 11 ? <> <img className="thumbPreview" src={formCadastro.values.imagem}  /> </>  : null }
                         </div>
                     </form>
                 )
