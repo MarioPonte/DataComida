@@ -13,6 +13,10 @@ const StyledSwitch = styled.div`
   justify-content: space-around;
   border-radius: 10000px;
   position: relative;
+  .switchIcons{
+    color: #CB9688;
+  }
+
   label {
     width: 50px;
   }
@@ -20,7 +24,7 @@ const StyledSwitch = styled.div`
   
   label:before {
     content: "";
-    background-color: #fafafa;
+    background-color: #CB9688;
     border: 1px solid #322624;
     width: 24px;
     height: 24px;
@@ -47,8 +51,8 @@ export default function DarkModeSwitch() {
                 htmlFor="darkmode"
                 className="darkmode-switch"
             >
-                <span>🌙</span>
-                <span>☀️</span>
+                <span><i class="fa-solid fa-moon"></i></span>
+                <span className="switchIcons"><i class="fa-solid fa-sun"></i></span>
             </label>
         </StyledSwitch>
     )

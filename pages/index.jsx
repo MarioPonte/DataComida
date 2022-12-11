@@ -120,7 +120,17 @@ function Timeline({ searchValue, ...props }) {
                                 .map((food) => {
                                     countFoods = countFoods + 1;
                                     return (
-                                        <Link className='foodLink' key={food.name} href="/recipes">
+                                        <Link
+                                        className='foodLink'
+                                        key={food.name}
+                                        href={{
+                                            pathname: "/recipes",
+                                            query: {
+                                                title: food.name,
+                                                image: food.image,
+                                                details: food.details
+                                            },
+                                        }}>
                                             <img className='foodImg' src={food.image} alt="" />
                                             <p>{food.name}</p>
                                         </Link>

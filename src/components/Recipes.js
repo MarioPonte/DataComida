@@ -5,10 +5,15 @@ export const RecipesStyle = styled.div`
         margin: 40px;
     }
 
+    .imgRecipe{
+        width: 400px;
+        height: 300px;
+        border-radius: 40px;
+    }
+
     .recipesBanner{
         height: 280px;
         border-radius: 0px 0px 40px 40px;
-
         background: url('images/food/boloAnos.jpg') center center;
         -webkit-background-size: cover;
         -moz-background-size: cover;
@@ -25,12 +30,12 @@ export const RecipesStyle = styled.div`
 
     .recipeTitle{
         font-size: 50px;
-        color: #FF3B2F;
+        color: ${({ theme }) => theme.borderBase};
         margin-bottom: 10px;
     }
 
     .recipeTime{
-        color: #FF3B2F;
+        color: ${({ theme }) => theme.borderBase};
         font-weight: 600;
         opacity: 0.75;
         margin-bottom: 20px;
@@ -38,28 +43,29 @@ export const RecipesStyle = styled.div`
     }
 
     .receiptButtons{
-        color: #FF3B2F;
-        background-color: white;
+        color: ${({ theme }) => theme.borderBase};
+        background-color: ${({ theme }) => theme.backgroundBase};
         padding: 8px;
         margin: 20px;
         font-size: 20px;
         font-weight: 600;
-        border: 2px solid #FF3B2F;
+        border: 2px solid ${({ theme }) => theme.borderBase};
         border-radius: 10px;
         cursor: pointer;
         transition: 0.2s;
     }
 
     .receiptButtons:hover{
-        color: white;
-        background-color: #FF3B2F;
+        color: ${({ theme }) => theme.backgroundBase};
+        background-color: ${({ theme }) => theme.borderBase};
     }
 
     ul {
         list-style: none
     }
     li::before {
-        content: "•"; color: #FF3B2F;;
+        content: "•";
+        color: ${({ theme }) => theme.borderBase};
         display: inline-block; width: 1em;
         margin-left: -1em
     }
