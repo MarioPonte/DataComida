@@ -15,5 +15,6 @@ Array.from(ingredientsList).forEach(element => { allIngredients += element.inner
 document.getElementById("copyBtn").addEventListener("click", copyText)
 
 function copyText(e){
+    console.log("click")
     navigator.clipboard.writeText(recipeTitle.innerText + "\n\n" + ingredientsTitle.innerText + ":\n" + allIngredients + "\n" + recDetailsTitle.innerText + ":\n" + recDetails.innerText);
 }

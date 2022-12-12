@@ -51,8 +51,8 @@ export default function DarkModeSwitch() {
                 htmlFor="darkmode"
                 className="darkmode-switch"
             >
-                <span><i class="fa-solid fa-moon"></i></span>
-                <span className="switchIcons"><i class="fa-solid fa-sun"></i></span>
+                <span className="switchIcons"><i className="fa-solid fa-moon"></i></span>
+                <span className="switchIcons"><i className="fa-solid fa-sun"></i></span>
             </label>
         </StyledSwitch>
     )

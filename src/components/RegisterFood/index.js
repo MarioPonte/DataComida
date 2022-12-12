@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from 'next/router';
 import { StyledRegisterVideo } from "./styles";
 import { createClient } from "@supabase/supabase-js";
@@ -27,6 +27,19 @@ function useForm(propsDoForm){
 const PROJECT_URL = "https://tqfqjugaasyxfpbfboaw.supabase.co";
 const PUBLIC_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRxZnFqdWdhYXN5eGZwYmZib2F3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2Njk1Nzk4MzAsImV4cCI6MTk4NTE1NTgzMH0.QzIUuSye0ph8vv0p3NhG_EkY0Ac0IM5SSou6IrZ1Bl0";
 const supabase = createClient(PROJECT_URL, PUBLIC_KEY);
+
+function addLi(){
+    var textVal = document.getElementById("textVal");
+    var listNode = document.getElementById("list");
+    var liNode = document.createElement("li");
+    var txtNode = document.createTextNode(textVal.value);
+
+    if(textVal.value != ""){
+        liNode.appendChild(txtNode);
+        listNode.appendChild(liNode);
+        document.getElementById("textVal").value = "";
+    }
+}
 
 
 export default function RegisterFood() {
@@ -90,6 +103,14 @@ export default function RegisterFood() {
                                     )
                                 })}
                             </select>
+
+                            <div>
+                                <input id="textVal" placeholder="Ingredientes..." type="text" />
+                                <button type="button" id="add" onClick={() =>{addLi()}}>Add</button>
+                            </div>
+
+                            <ul id="list">
+                            </ul>
 
                             <textarea required name="detalhes" value={formCadastro.values.detalhes} onChange={formCadastro.handleChange} placeholder="Detalhes da receita" rows="4" cols="50">
                             </textarea>
