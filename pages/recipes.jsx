@@ -11,7 +11,7 @@ export default function Recipes(){
         //let recipeTitle = document.getElementById("recTitle").innerHTML;
         let recipeTitle = document.querySelector(".recipeTitle");
         let ingredientsTitle = document.querySelector(".ingredientsTitle");
-        let ingredientsList = document.getElementsByTagName('li');
+        let ingredientsList = document.getElementById("listVal").getElementsByTagName("li");
         let recDetailsTitle = document.querySelector(".recDetailsTitle");
         let recDetails = document.querySelector(".recDetails");
     
@@ -25,7 +25,6 @@ export default function Recipes(){
         document.getElementById("copyBtn").addEventListener("click", copyText)
     
         function copyText(e){
-            console.log("click")
             navigator.clipboard.writeText(recipeTitle.innerText + "\n\n" + ingredientsTitle.innerText + ":\n" + allIngredients + "\n" + recDetailsTitle.innerText + ":\n" + recDetails.innerText);
         }
     
@@ -35,6 +34,7 @@ export default function Recipes(){
 
 
     const router = useRouter();
+
     return (
         <>
             <Head>
@@ -50,16 +50,7 @@ export default function Recipes(){
                     <h1 className="recipeTitle">{router.query.title}</h1>
                     <span className="recipeTime"><i className="fa-solid fa-clock"></i> 1 Hora e 30 minutos</span>
                     <h2 className="ingredientsTitle">Ingredientes</h2>
-                    <ul className="ingredientsList">
-                        <li>8 ovos</li>
-                        <li>32 colheres de açucar</li>
-                        <li>15 colheres de sopa de farinha</li>
-                        <li>2 colheres de fécula de batata</li>
-                        <li>1 colher de água</li>
-                        <li>1 pitada de pó Royal</li>
-                        <li>Meio pacote de açucar baunilhado</li>
-                        <li>Ananás e morangos</li>
-                        <li>2 pacotes de natas</li>
+                    <ul id="listVal" className="ingredientsList" dangerouslySetInnerHTML={{__html: router.query.ingredients}}>
                     </ul>
                     <h2 className="recDetailsTitle">Procedimentos</h2>
                     <p className="recDetails">{router.query.details}</p>

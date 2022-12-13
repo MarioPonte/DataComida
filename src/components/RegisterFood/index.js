@@ -38,13 +38,16 @@ function addLi(){
         liNode.appendChild(txtNode);
         listNode.appendChild(liNode);
         document.getElementById("textVal").value = "";
+        console.log(liNode);
     }
+
+    return listNode.innerHTML;
 }
 
 
 export default function RegisterFood() {
     const formCadastro = useForm({
-        initialValues: { titulo: "", imagem: "", detalhes: ""}
+        initialValues: { titulo: "", imagem: "",ingredientes: "", detalhes: ""}
     });
     const [formVisivel, setFormVisivel] = React.useState(false);
 
@@ -67,6 +70,7 @@ export default function RegisterFood() {
                         supabase.from("foods").insert({
                             name: formCadastro.values.titulo,
                             image: formCadastro.values.imagem,
+                            ingredients: addLi(),
                             details: formCadastro.values.detalhes,
                             category: formCadastro.values.categoria,
                         })
@@ -109,7 +113,7 @@ export default function RegisterFood() {
                                 <button type="button" id="add" onClick={() =>{addLi()}}>Add</button>
                             </div>
 
-                            <ul id="list">
+                            <ul name="lista" id="list">
                             </ul>
 
                             <textarea required name="detalhes" value={formCadastro.values.detalhes} onChange={formCadastro.handleChange} placeholder="Detalhes da receita" rows="4" cols="50">

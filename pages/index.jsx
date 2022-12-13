@@ -128,6 +128,7 @@ function Timeline({ searchValue, ...props }) {
                                             query: {
                                                 title: food.name,
                                                 image: food.image,
+                                                ingredients: food.ingredients,
                                                 details: food.details
                                             },
                                         }}>
