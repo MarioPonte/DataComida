@@ -42,7 +42,7 @@ export default function Recipes(){
             </Head>
             <Script src="https://kit.fontawesome.com/af5e23e73e.js" />
             <RecipesStyle>
-                <section>
+                <section className="imgSection">
                     {/* <a className="backBtn" href="/"><i className="fa-solid fa-arrow-left"></i></a> */}
                     <img className="imgRecipe" src={router.query.image} alt="" srcSet="" />
                 </section>

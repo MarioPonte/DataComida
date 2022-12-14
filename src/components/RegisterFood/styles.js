@@ -33,6 +33,21 @@ export const StyledRegisterVideo = styled.div`
     border: none;
     cursor: pointer;
   }
+
+  .addIngredients{
+    background-color: ${({ theme }) => theme.borderBase};
+    padding: 8px 16px;
+    border: none;
+    border-radius: 0px 8px 8px 0px;
+    cursor: pointer;
+    color: ${({ theme }) => theme.backgroundLevel2};
+  }
+
+  #textVal{
+    width: 229px;
+    border-radius: 8px 0px 0px 8px !important;
+  }
+
   button[type="submit"] {
     background-color: ${({ theme }) => theme.borderBase};
     padding: 8px 16px;

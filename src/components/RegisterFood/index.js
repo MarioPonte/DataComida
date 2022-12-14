@@ -110,7 +110,7 @@ export default function RegisterFood() {
 
                             <div>
                                 <input id="textVal" placeholder="Ingredientes..." type="text" />
-                                <button type="button" id="add" onClick={() =>{addLi()}}>Add</button>
+                                <button type="button" className="addIngredients" id="add" onClick={() =>{addLi()}}>Add</button>
                             </div>
 
                             <ul name="lista" id="list">

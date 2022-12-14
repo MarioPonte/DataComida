@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 export const RecipesStyle = styled.div`
+
+    .imgSection{
+        margin: 40px;
+    }
     .recipe{
         margin: 40px;
     }
