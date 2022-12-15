@@ -17,6 +17,30 @@ export const TimelineStyle = styled.div`
         margin: 24px;
     }
 
+    .catLibrary{
+        margin: 60px;
+    }
+
+    .catItem{
+        margin: 6px;
+        background-color: #CB9688;
+        color: #322624;
+        padding: 6px;
+        border-radius: 10px;
+        font-size: 14px;
+        transition: 0.2s;
+    }
+
+    .catItem:hover{
+        background-color: #B9897C;
+        color: #322624;
+    }
+
+    .catActive{
+        background-color: #946D63;
+        color: #FFF9F9;
+    }
+
     .foodSection{
         margin: 60px;
     }
@@ -81,9 +105,9 @@ export function Timeline({ searchValue, ...props }) {
             </div>
 
             <div className="catLibrary">
-                <a href="#">Todas</a>
-                <a href="#">Bolos</a>
-                <a href="#">Peixes</a>
+                <a href="#" className="catItem catActive">Todas</a>
+                <a href="#" className="catItem">Bolos</a>
+                <a href="#" className="catItem">Peixes</a>
             </div>
 
             {categoryNames.map((categoryName) => {
