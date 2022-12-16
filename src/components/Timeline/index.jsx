@@ -18,8 +18,89 @@ export const TimelineStyle = styled.div`
     }
 
     .catLibrary{
+        padding: 35px;
+        position: relative;
+        overflow-x: hidden;
+        max-width: 1000px;
         margin: 60px;
+        background-color: #ffd5d5;
     }
+
+    .catLibrary .arrowIcons{
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 120px;
+        display: flex;
+        align-items: center;
+    }
+
+    .arrowIcons:first-child{
+        left: 0;
+        display: none;
+        background: linear-gradient(90deg, #ffd5d5 70%, transparent);
+    }
+
+    .arrowIcons:last-child{
+        right: 0;
+        justify-content: flex-end;
+        background: linear-gradient(-90deg, #ffd5d5 70%, transparent);
+    }
+
+    .arrowIcons i{
+        width: 55px;
+        height: 55px;
+        cursor: pointer;
+        font-size: 1.2rem;
+        text-align: center;
+        line-height: 55px;
+        border-radius: 100vw;
+    }
+
+    .arrowIcons i:hover{
+        background: #ffc0c0;
+    }
+
+    .arrowIcons:first-child i{
+        margin-left: 15px;
+    }
+
+    .arrowIcons:last-child i{
+        margin-right: 15px;
+    }
+
+    .catLibrary .tabsBox{
+        display: flex;
+        gap: 12px;
+        list-style: none;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+    }
+
+    .tabsBox.dragging{
+        scroll-behavior: auto;
+        cursor: grab;
+    }
+
+    .tabsBox .tab{
+        cursor: pointer;
+        white-space: nowrap;
+        background-color: #CB9688;
+        padding: 6px;
+        border-radius: 10px;
+    }
+
+    .tabsBox.dragging .tab{
+        user-select: none;
+        pointer-events: none;
+    }
+
+    .tabsBox .tab.active{
+        background-color: #946D63;
+        color: #FFF9F9;
+    }
+
+
 
     .catItem{
         margin: 6px;
@@ -34,6 +115,11 @@ export const TimelineStyle = styled.div`
     .catItem:hover{
         background-color: #B9897C;
         color: #322624;
+    }
+
+    .catActive{
+        background-color: #946D63;
+        color: #FFF9F9;
     }
 
     .catActive{
@@ -92,6 +178,49 @@ export function Timeline({ searchValue, ...props }) {
 
         fetchFoods()
 
+        const tabsBox = document.querySelector(".tabsBox");
+        let allTabs = document.querySelectorAll(".tab");
+        const arrowIcons = document.querySelectorAll(".arrowIcons i");
+
+        let isDragging = false;
+
+        const handleIcons = () => {
+            let scrollVal = Math.round(tabsBox.scrollLeft);
+            let maxScrollWidth = tabsBox.scrollWidth - tabsBox.clientWidth;
+            arrowIcons[0].parentElement.style.display = scrollVal > 0 ? "flex" : "none";
+            arrowIcons[1].parentElement.style.display = maxScrollWidth > scrollVal ? "flex" : "none";
+        }
+
+        arrowIcons.forEach(icon => {
+            icon.addEventListener("click", () => {
+                tabsBox.scrollLeft += icon.id === "left" ? -350 : 350;
+                setTimeout(() => handleIcons(), 50);
+            })
+        });
+
+        allTabs.forEach(tab => {
+            tab.addEventListener("click", () => {
+                tabsBox.querySelector(".active").classList.remove("active");
+                tab.classList.add("active");
+            });
+        });
+
+        const dragging = (e) => {
+            if(!isDragging) return;
+            tabsBox.classList.add("dragging");
+            tabsBox.scrollLeft -= e.movementX;
+            handleIcons();
+        }
+
+        const dragStop = () => {
+            isDragging = false;
+            tabsBox.classList.remove("dragging");
+        }
+
+        tabsBox.addEventListener("mousedown", () => isDragging = true);
+        tabsBox.addEventListener("mousemove", dragging);
+        document.addEventListener("mouseup", dragStop);
+
     }, [])
 
     const categoryNames = Object.keys(props.categories);
@@ -105,9 +234,27 @@ export function Timeline({ searchValue, ...props }) {
             </div>
 
             <div className="catLibrary">
-                <a href="#" className="catItem catActive">Todas</a>
-                <a href="#" className="catItem">Bolos</a>
-                <a href="#" className="catItem">Peixes</a>
+                <div className="arrowIcons"><i id="left" className="fa-solid fa-angle-left"></i></div>
+                <ul className="tabsBox">
+                    <li className="tab active">Todas</li>
+                    <li className="tab">Bolos</li>
+                    <li className="tab">Peixes</li>
+                    <li className="tab">Petiscos</li>
+                    <li className="tab">Petiscos</li>
+                    <li className="tab">Petiscos</li>
+                    <li className="tab">Petiscos</li>
+                    <li className="tab">Petiscos</li>
+                    <li className="tab">Petiscos</li>
+                    <li className="tab">Petiscos</li>
+                    <li className="tab">Petiscos</li>
+                    <li className="tab">Petiscos</li>
+                    <li className="tab">Petiscos</li>
+                    <li className="tab">Petiscos</li>
+                    <li className="tab">Petiscos</li>
+                    <li className="tab">Petiscos</li>
+                    <li className="tab">Petiscos</li>
+                </ul>
+                <div className="arrowIcons"><i id="right" className="fa-solid fa-angle-right"></i></div>
             </div>
 
             {categoryNames.map((categoryName) => {
