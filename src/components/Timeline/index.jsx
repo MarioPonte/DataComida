@@ -21,9 +21,8 @@ export const TimelineStyle = styled.div`
         padding: 35px;
         position: relative;
         overflow-x: hidden;
-        max-width: 1000px;
+        max-width: 100%;
         margin: 60px;
-        background-color: #ffd5d5;
     }
 
     .catLibrary .arrowIcons{
@@ -38,13 +37,13 @@ export const TimelineStyle = styled.div`
     .arrowIcons:first-child{
         left: 0;
         display: none;
-        background: linear-gradient(90deg, #ffd5d5 70%, transparent);
+        background: linear-gradient(90deg, ${({ theme }) => theme.backgroundBase} 70%, transparent);
     }
 
     .arrowIcons:last-child{
         right: 0;
         justify-content: flex-end;
-        background: linear-gradient(-90deg, #ffd5d5 70%, transparent);
+        background: linear-gradient(-90deg, ${({ theme }) => theme.backgroundBase} 70%, transparent);
     }
 
     .arrowIcons i{
@@ -58,7 +57,7 @@ export const TimelineStyle = styled.div`
     }
 
     .arrowIcons i:hover{
-        background: #ffc0c0;
+        background: #cb978814;
     }
 
     .arrowIcons:first-child i{
@@ -239,19 +238,6 @@ export function Timeline({ searchValue, ...props }) {
                     <li className="tab active">Todas</li>
                     <li className="tab">Bolos</li>
                     <li className="tab">Peixes</li>
-                    <li className="tab">Petiscos</li>
-                    <li className="tab">Petiscos</li>
-                    <li className="tab">Petiscos</li>
-                    <li className="tab">Petiscos</li>
-                    <li className="tab">Petiscos</li>
-                    <li className="tab">Petiscos</li>
-                    <li className="tab">Petiscos</li>
-                    <li className="tab">Petiscos</li>
-                    <li className="tab">Petiscos</li>
-                    <li className="tab">Petiscos</li>
-                    <li className="tab">Petiscos</li>
-                    <li className="tab">Petiscos</li>
-                    <li className="tab">Petiscos</li>
                     <li className="tab">Petiscos</li>
                 </ul>
                 <div className="arrowIcons"><i id="right" className="fa-solid fa-angle-right"></i></div>
