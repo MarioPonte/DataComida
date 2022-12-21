@@ -77,4 +77,10 @@ export const RecipesStyle = styled.div`
     .ingredientsList{
         font-weight: 600;
     }
+
+    @media print{
+        .receiptButtons{
+            display: none !important;
+        }
+    }
 `;

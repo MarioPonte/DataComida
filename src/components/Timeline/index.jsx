@@ -5,6 +5,7 @@ import supabase from '../../../pages/api/supabase';
 import Link from "next/link";
 
 export const TimelineStyle = styled.div`
+
     .profileImg{
         width: 100px;
         height: 100px;
@@ -235,10 +236,10 @@ export function Timeline({ searchValue, ...props }) {
             <div className="catLibrary">
                 <div className="arrowIcons"><i id="left" className="fa-solid fa-angle-left"></i></div>
                 <ul className="tabsBox">
-                    <li className="tab active">Todas</li>
-                    <li className="tab">Bolos</li>
-                    <li className="tab">Peixes</li>
-                    <li className="tab">Petiscos</li>
+                    <li className="tab active"><a href="#">Todas</a></li>
+                    <li className="tab"><a href="#Bolos">Bolos</a></li>
+                    <li className="tab"><a href="#Peixes">Peixes</a></li>
+                    <li className="tab"><a href="#Petiscos">Petiscos</a></li>
                 </ul>
                 <div className="arrowIcons"><i id="right" className="fa-solid fa-angle-right"></i></div>
             </div>
@@ -249,7 +250,7 @@ export function Timeline({ searchValue, ...props }) {
 
                 return (
                     <div className='foodSection' key={categoryName}>
-                        <h3>{categoryName}</h3>
+                        <h3 id={categoryName} >{categoryName}</h3>
                         <div>
                             {foods
                                 .filter((food) => {
