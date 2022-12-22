@@ -34,16 +34,23 @@ export default function Recipes(){
     const router = useRouter();
 
     const handleDelete = async () => {
-        const { data, error } = await supabase
-            .from("foods")
-            .delete()
-            .eq("name", router.query.title)
 
-        if(error){
-            console.log(error);
-        }
-        if(data){
-            console.log(data);
+        const confirmDelete = confirm("Tem a certeza que deseja excluir esta receita?");
+
+        if(confirmDelete == true){
+            const { data, error } = await supabase
+                .from("foods")
+                .delete()
+                .eq("name", router.query.title)
+
+            if(error){
+                console.log(error);
+            }
+            if(data){
+                console.log(data);
+            }
+
+            router.push("/");
         }
     }
 
