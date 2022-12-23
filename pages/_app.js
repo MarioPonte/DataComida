@@ -4,6 +4,8 @@ import { CSSReset } from "../src/components/CSSReset";
 import ColorModeProvider, { ColorModeContext } from "../src/components/Header/components/ColorMode";
 import '../styles/globals.css';
 import RegisterFood from "../src/components/RegisterFood";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const theme = {
     light: {
@@ -43,6 +45,7 @@ function Root({ Component, pageProps }) {
 
                 <Component {...pageProps} />
                 <RegisterFood />
+                <ToastContainer />
             </ThemeProvider>
     )
 }

@@ -5,6 +5,8 @@ import { createClient } from "@supabase/supabase-js";
 
 import config from "../../../config.json";
 
+import { toast } from 'react-toastify';
+
 // Custom Hook
 function useForm(propsDoForm){
     const [values, setValues] = React.useState(propsDoForm.initialValues);
@@ -76,7 +78,8 @@ export default function RegisterFood() {
                         })
                         .then((insResponse) => {
                             console.log(insResponse);
-                            router.reload()
+
+                            router.reload();
                         })
                         .catch((err) => {
                             console.log(err);

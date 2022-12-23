@@ -5,6 +5,7 @@ import Script from "next/script";
 import { RecipesStyle } from '../src/components/Recipes';
 import { useRouter } from "next/router";
 import supabase from "./api/supabase";
+import { toast } from 'react-toastify';
 
 export default function Recipes(){
 
@@ -49,6 +50,17 @@ export default function Recipes(){
             if(data){
                 console.log(data);
             }
+
+            toast.success('Receita excluida com sucesso!', {
+                position: "top-right",
+                autoClose: 2750,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
 
             router.push("/");
         }
