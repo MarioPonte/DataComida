@@ -9,6 +9,9 @@ import supabase from './api/supabase';
 import { foodService } from "./api/supabase";
 import Link from "next/link";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const GlobalStyle = createGlobalStyle`
     *{
         margin: 0px;
@@ -28,6 +31,17 @@ export default function HomePage() {
     const [categories, setCategories] = React.useState({});
 
     React.useEffect(() => {
+        toast.success('Receita inserida com sucesso!', {
+            position: "top-right",
+            autoClose: 2750,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+
         //console.log("useEffect");
         service.getAllFoods()
             .then((dados) => {
@@ -55,6 +69,8 @@ export default function HomePage() {
                 <Timeline searchValue={valorDoFiltro} categories={categories} />
             </main>
             <Footer />
+
+            <ToastContainer />
         </div>
     )
 }
