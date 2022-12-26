@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { useRouter } from 'next/router';
 import { StyledRegisterVideo } from "./styles";
 import { createClient } from "@supabase/supabase-js";
-
 import config from "../../../config.json";
-
 import { toast } from 'react-toastify';
+
+import { useApi } from '../../hooks/useSwrApi';
 
 // Custom Hook
 function useForm(propsDoForm){
@@ -79,7 +79,18 @@ export default function RegisterFood() {
                         .then((insResponse) => {
                             console.log(insResponse);
 
-                            router.reload();
+                            toast.success('Receita inserida com sucesso!', {
+                                position: "top-right",
+                                autoClose: 2750,
+                                hideProgressBar: false,
+                                closeOnClick: true,
+                                pauseOnHover: true,
+                                draggable: true,
+                                progress: undefined,
+                                theme: "light",
+                            });
+
+                            //router.reload();
                         })
                         .catch((err) => {
                             console.log(err);

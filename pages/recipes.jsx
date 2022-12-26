@@ -88,7 +88,7 @@ export default function Recipes(){
                     <div>
                         <button id="copyBtn" className="copyButton receiptButtons"><i className="fa-solid fa-print"></i> Copiar Receita</button>
                         <button id="print" className="receiptButtons" onClick={() => {window.print()}}><i className="fa-solid fa-print"></i> Imprimir Receita</button>
-
+                        <button className="receiptButtons"><i className="fa-solid fa-pen"></i> Editar Receita</button>
                         <button className="receiptButtons" onClick={handleDelete}><i className="fa-solid fa-trash-can"></i> Apagar Receita</button>
                     </div>
                 </section>
