@@ -4,8 +4,9 @@ import { CSSReset } from "../src/components/CSSReset";
 import ColorModeProvider, { ColorModeContext } from "../src/components/Header/components/ColorMode";
 import '../styles/globals.css';
 import RegisterFood from "../src/components/RegisterFood";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from 'react-helmet';
 
 const theme = {
     light: {
@@ -42,10 +43,13 @@ function Root({ Component, pageProps }) {
     return (
             <ThemeProvider theme={theme[contexto.mode]}>
                 <CSSReset />
-
+                <Helmet>
+                    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"></link>
+                    <script src="https://kit.fontawesome.com/af5e23e73e.js" crossOrigin="anonymous"></script>
+                    <title>DataComida</title>
+                </Helmet>
                 <Component {...pageProps} />
                 <RegisterFood />
-                <ToastContainer />
             </ThemeProvider>
     )
 }
@@ -54,6 +58,7 @@ export default function App(props) {
     return (
         <ProviderWrapper>
             <Root {...props} />
+            <ToastContainer />
         </ProviderWrapper>
     )
 };

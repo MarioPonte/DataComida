@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import config from "../config.json";
-import styled, { createGlobalStyle } from "styled-components";
-import { Helmet } from 'react-helmet';
+import React from 'react';
+import { createGlobalStyle } from "styled-components";
 import { Header } from '../src/components/Header';
 import { Timeline } from '../src/components/Timeline';
 import { FooterStyle } from '../src/components/Footer';
-import supabase from './api/supabase';
 import { foodService } from "./api/supabase";
 import Link from "next/link";
 
@@ -42,13 +39,6 @@ export default function HomePage() {
 
     return (
         <div>
-            <Helmet>
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-                <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"></link>
-                <script src="https://kit.fontawesome.com/af5e23e73e.js" crossorigin="anonymous"></script>
-                <title>DataComida</title>
-            </Helmet>
             <GlobalStyle />
             <main className='mainContainer'>
                 <Header valorDoFiltro={valorDoFiltro} setValorDoFiltro={setValorDoFiltro} />

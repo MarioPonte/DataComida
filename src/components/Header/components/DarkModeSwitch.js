@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { ColorModeContext } from "./ColorMode";
 
 const StyledSwitch = styled.div`
+  margin: 10px;
   background-color: #322624;
   border: 0;
   padding: 3px;
@@ -19,6 +20,7 @@ const StyledSwitch = styled.div`
 
   label {
     width: 50px;
+    cursor: pointer;
   }
   span { display: inline-flex; width: 20px; height: 20px; align-items: center; justify-content: center; }
   

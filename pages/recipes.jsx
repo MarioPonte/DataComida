@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-import {CopyToClipboard} from 'react-copy-to-clipboard';
-import Head from "next/head";
 import Script from "next/script";
 import { RecipesStyle } from '../src/components/Recipes';
 import { useRouter } from "next/router";
@@ -16,8 +14,6 @@ export default function Recipes(){
         let ingredientsList = document.getElementById("listVal").getElementsByTagName("li");
         let recDetailsTitle = document.querySelector(".recDetailsTitle");
         let recDetails = document.querySelector(".recDetails");
-    
-        let copyButton = document.querySelector(".copyButton");
     
         let allIngredients = "";
     
@@ -68,9 +64,6 @@ export default function Recipes(){
 
     return (
         <>
-            <Head>
-                <title>DataComida</title>
-            </Head>
             <Script src="https://kit.fontawesome.com/af5e23e73e.js" />
             <RecipesStyle>
                 <section className="imgSection">

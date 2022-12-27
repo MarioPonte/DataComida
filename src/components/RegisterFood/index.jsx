@@ -1,11 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useRouter } from 'next/router';
-import { StyledRegisterVideo } from "./styles";
+import { StyledRegisterRecipe } from "./styles";
 import { createClient } from "@supabase/supabase-js";
 import config from "../../../config.json";
-import { toast } from 'react-toastify';
-
-import { useApi } from '../../hooks/useSwrApi';
 
 // Custom Hook
 function useForm(propsDoForm){
@@ -46,8 +43,8 @@ function addLi(){
     return listNode.innerHTML;
 }
 
-
 export default function RegisterFood() {
+
     const formCadastro = useForm({
         initialValues: { titulo: "", imagem: "",ingredientes: "", detalhes: ""}
     });
@@ -58,7 +55,7 @@ export default function RegisterFood() {
     const router = useRouter();
 
     return (
-        <StyledRegisterVideo>
+        <StyledRegisterRecipe>
             <button className="add-food" onClick={() => { setFormVisivel(true) }}>
                 <i className="fa-solid fa-plus"></i>
             </button>
@@ -79,18 +76,7 @@ export default function RegisterFood() {
                         .then((insResponse) => {
                             console.log(insResponse);
 
-                            toast.success('Receita inserida com sucesso!', {
-                                position: "top-right",
-                                autoClose: 2750,
-                                hideProgressBar: false,
-                                closeOnClick: true,
-                                pauseOnHover: true,
-                                draggable: true,
-                                progress: undefined,
-                                theme: "light",
-                            });
-
-                            //router.reload();
+                            router.reload();
                         })
                         .catch((err) => {
                             console.log(err);
@@ -149,6 +135,6 @@ export default function RegisterFood() {
                     </form>
                 )
                 : false}
-        </StyledRegisterVideo>
+        </StyledRegisterRecipe>
     )
 }
