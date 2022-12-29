@@ -119,6 +119,13 @@ export default function AddRecipe() {
                     </select>
 
                     <div>
+                        <input
+                            type="time"
+                            name="tempo"
+                            required />
+                    </div>
+
+                    <div>
                         <input id="textVal" placeholder="Ingredientes..." type="text" />
                         <button type="button" className="addIngredients" id="add" onClick={() => { addLi() }}>Add</button>
                     </div>

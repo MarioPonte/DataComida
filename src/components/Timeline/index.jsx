@@ -44,17 +44,16 @@ export function Timeline({ searchValue, ...props }) {
 
         let isDragging = false;
 
-        const handleIcons = () => {
-            let scrollVal = Math.round(tabsBox.scrollLeft);
+        const handleIcons = (scrollVal) => {
             let maxScrollWidth = tabsBox.scrollWidth - tabsBox.clientWidth;
-            arrowIcons[0].parentElement.style.display = scrollVal > 0 ? "flex" : "none";
-            arrowIcons[1].parentElement.style.display = maxScrollWidth > scrollVal ? "flex" : "none";
+            arrowIcons[0].parentElement.style.display = scrollVal <= 0 ? "none" : "flex";
+            arrowIcons[1].parentElement.style.display = maxScrollWidth - scrollVal <= 1 ? "none" : "flex";
         }
 
         arrowIcons.forEach(icon => {
             icon.addEventListener("click", () => {
-                tabsBox.scrollLeft += icon.id === "left" ? -350 : 350;
-                setTimeout(() => handleIcons(), 50);
+                let scrollWidth = tabsBox.scrollLeft += icon.id === "left" ? -340 : 340;
+                handleIcons(scrollWidth);
             })
         });
 
@@ -69,7 +68,7 @@ export function Timeline({ searchValue, ...props }) {
             if(!isDragging) return;
             tabsBox.classList.add("dragging");
             tabsBox.scrollLeft -= e.movementX;
-            handleIcons();
+            handleIcons(tabsBox.scrollLeft);
         }
 
         const dragStop = () => {

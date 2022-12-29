@@ -83,6 +83,7 @@ export const TimelineStyle = styled.div`
         white-space: nowrap;
         background-color: #CB9688;
         padding: 6px;
+        border: 2px solid #946D63;
         border-radius: 10px;
         transition: 0.2s;
     }
