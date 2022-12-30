@@ -5,7 +5,6 @@ import supabase from '../api/supabase';
 import config from "../../config.json";
 import { toast } from 'react-toastify';
 
-
 // Custom Hook
 function useForm(propsDoForm) {
     const [values, setValues] = React.useState(propsDoForm.initialValues);
@@ -45,7 +44,7 @@ function addLi() {
 export default function AddRecipe() {
 
     const formCadastro = useForm({
-        initialValues: { titulo: "", imagem: "", ingredientes: "", detalhes: "" }
+        initialValues: { titulo: "", imagem: "", ingredientes: "", detalhes: "", tempo: "" }
     });
 
     const categoryNames = Object.keys(config.foods);
@@ -72,6 +71,7 @@ export default function AddRecipe() {
                     image: formCadastro.values.imagem,
                     ingredients: addLi(),
                     details: formCadastro.values.detalhes,
+                    time: formCadastro.values.tempo,
                     category: formCadastro.values.categoria,
                 })
                     .then((insResponse) => {
@@ -122,6 +122,8 @@ export default function AddRecipe() {
                         <input
                             type="time"
                             name="tempo"
+                            value={formCadastro.values.tempo}
+                            onChange={formCadastro.handleChange}
                             required />
                     </div>
 

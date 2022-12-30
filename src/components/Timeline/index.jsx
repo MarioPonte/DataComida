@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { TimelineStyle } from "./styles";
 import React, { useEffect, useState } from 'react';
 import config from "../../../config.json";
@@ -129,7 +128,8 @@ export function Timeline({ searchValue, ...props }) {
                                                 title: food.name,
                                                 image: food.image,
                                                 ingredients: food.ingredients,
-                                                details: food.details
+                                                details: food.details,
+                                                time: food.time
                                             },
                                         }}>
                                             <img className='foodImg' src={food.image} alt="" />

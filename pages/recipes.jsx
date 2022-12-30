@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Script from "next/script";
 import { RecipesStyle } from '../src/components/Recipes';
 import { useRouter } from "next/router";
 import supabase from "./api/supabase";
@@ -29,6 +28,12 @@ export default function Recipes(){
     }, [])
 
     const router = useRouter();
+
+    let arrTime = (String(router.query.time)).split(":");
+
+    var nums = arrTime.map(function(str) { return parseInt(str); });
+
+    console.log(nums);
 
     const handleDelete = async () => {
 
@@ -64,7 +69,6 @@ export default function Recipes(){
 
     return (
         <>
-            <Script src="https://kit.fontawesome.com/af5e23e73e.js" />
             <RecipesStyle>
                 <section className="imgSection">
                     {/* <a className="backBtn" href="/"><i className="fa-solid fa-arrow-left"></i></a> */}
@@ -72,7 +76,7 @@ export default function Recipes(){
                 </section>
                 <section className="recipe">
                     <h1 className="recipeTitle">{router.query.title}</h1>
-                    <span className="recipeTime"><i className="fa-solid fa-clock"></i> 1 Hora e 30 minutos</span>
+                    <span className="recipeTime"><i className="fa-solid fa-clock"></i> {router.query.time}</span>
                     <h2 className="ingredientsTitle">Ingredientes</h2>
                     <ul id="listVal" className="ingredientsList" dangerouslySetInnerHTML={{__html: router.query.ingredients}}>
                     </ul>
