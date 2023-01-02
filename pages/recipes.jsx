@@ -30,14 +30,17 @@ export default function Recipes(){
     const router = useRouter();
 
     let arrTime = (String(router.query.time)).split(":");
+    let nums = arrTime.map(function(str) { return parseInt(str); });
+    let timeMessage = "";
 
-    var nums = arrTime.map(function(str) { return parseInt(str); });
-
-    if(nums[0] == 0 && nums[1] == 0){
-        console.log("Nada");
-    }else if(nums[0] == 0 && nums[1] > 0){
-        console.log(nums[1] + " minutos");
-    }
+    if(nums[0] == 0 && nums[1] == 1) timeMessage = nums[1] + " minuto";
+    else if(nums[0] == 0 && nums[1] > 1) timeMessage = nums[1] + " minutos";
+    else if(nums[0] == 1 && nums[1] == 0) timeMessage = nums[0] + " hora";
+    else if(nums[0] > 1 && nums[1] == 0) timeMessage = nums[0] + " horas";
+    else if(nums[0] == 1 && nums[1] == 1) timeMessage = nums[0] + " hora e " + nums[1] + " minuto";
+    else if(nums[0] == 1 && nums[1] > 1) timeMessage = nums[0] + " hora e " + nums[1] + " minutos";
+    else if(nums[0] > 1 && nums[1] == 1) timeMessage = nums[0] + " horas e " + nums[1] + " minuto";
+    else if(nums[0] > 1 && nums[1] > 1) timeMessage = nums[0] + " horas e " + nums[1] + " minutos";
 
     const handleDelete = async () => {
 
@@ -80,7 +83,7 @@ export default function Recipes(){
                 </section>
                 <section className="recipe">
                     <h1 className="recipeTitle">{router.query.title}</h1>
-                    <span className="recipeTime"><i className="fa-solid fa-clock"></i> {router.query.time}</span>
+                    <span className="recipeTime"><i className="fa-solid fa-clock"></i> {timeMessage}</span>
                     <h2 className="ingredientsTitle">Ingredientes</h2>
                     <ul id="listVal" className="ingredientsList" dangerouslySetInnerHTML={{__html: router.query.ingredients}}>
                     </ul>

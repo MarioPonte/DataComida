@@ -54,6 +54,7 @@ export default function AddRecipe() {
 
     return (
         <StyledRegisterRecipe>
+
             <div className="addInfo">
                 <h1 className="addInfoTitle">Inserir Receita</h1>
                 <button type="button" className="closePage" onClick={() => { router.push("/") }}>

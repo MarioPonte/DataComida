@@ -29,4 +29,20 @@ export const CSSReset = createGlobalStyle`
     background-color: ${({ theme }) => theme.backgroundBase};
     color: ${({ theme }) => theme.textColorBase};
   }
+
+  .add-food {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+        color: inherit;
+        position: fixed;
+        bottom: 16px;
+        right: 16px;
+        border: 0;
+        background-color: #CB9688;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
+        border-radius: 50%;
+        z-index: 99;
+        cursor: pointer;
+  }
 `;

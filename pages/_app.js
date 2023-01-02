@@ -1,9 +1,9 @@
 import React from "react";
+import { useRouter } from 'next/router';
 import { ThemeProvider } from "styled-components";
 import { CSSReset } from "../src/components/CSSReset";
 import ColorModeProvider, { ColorModeContext } from "../src/components/Header/components/ColorMode";
 import '../styles/globals.css';
-import RegisterFood from "../src/components/RegisterFood";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from 'react-helmet';
@@ -39,6 +39,7 @@ function ProviderWrapper(props) {
 
 function Root({ Component, pageProps }) {
     const contexto = React.useContext(ColorModeContext);
+    const router = useRouter();
 
     return (
             <ThemeProvider theme={theme[contexto.mode]}>
@@ -49,7 +50,10 @@ function Root({ Component, pageProps }) {
                     <title>DataComida</title>
                 </Helmet>
                 <Component {...pageProps} />
-                <RegisterFood />
+
+                <button className="add-food" onClick={() => { router.push("/addRecipe"); }}>
+                    <i className="fa-solid fa-plus"></i>
+                </button>
             </ThemeProvider>
     )
 }

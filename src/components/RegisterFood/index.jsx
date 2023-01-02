@@ -56,9 +56,6 @@ export default function RegisterFood() {
 
     return (
         <StyledRegisterRecipe>
-            <button className="add-food" onClick={() => { setFormVisivel(true) }}>
-                <i className="fa-solid fa-plus"></i>
-            </button>
             {formVisivel
                 ? (
                     <form onSubmit={(evento) => {
