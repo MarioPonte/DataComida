@@ -6,13 +6,15 @@ export const StyledRegisterRecipe = styled.div`
     text-align: center;
 
     .addInfo{
-        display: inline-block;
-        text-align: center;
+        overflow: hidden;
+        clear: both;
     }
 
     .closePage{
+        float: right;
         font-size: 40px;
         background-color: inherit;
+        color: ${({ theme }) => theme.textColorBase};
         border: none;
         cursor: pointer;
     }
@@ -69,6 +71,7 @@ export const StyledRegisterRecipe = styled.div`
         border-radius: 8px;
         border: 1px solid ${({ theme }) => theme.borderBase};
         padding: 8px 10px;
+        margin-top: 10px;
         margin-bottom: 10px;
         outline: none;
         color: #222222;
@@ -89,6 +92,14 @@ export const StyledRegisterRecipe = styled.div`
         color: ${({ theme }) => theme.textColorBase};
         background-color: ${({ theme }) => theme.backgroundBase};
         text-transform: capitalize;
+    }
+
+    #list{
+        width: 400px;
+        margin: auto;
+        border: 1px solid ${({ theme }) => theme.borderBase};
+        border-radius: 8px;
+        text-align: left;
     }
 
     .thumbPreview{

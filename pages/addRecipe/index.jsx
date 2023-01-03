@@ -56,10 +56,10 @@ export default function AddRecipe() {
         <StyledRegisterRecipe>
 
             <div className="addInfo">
-                <h1 className="addInfoTitle">Inserir Receita</h1>
                 <button type="button" className="closePage" onClick={() => { router.push("/") }}>
                     <i className="fa-solid fa-xmark"></i>
                 </button>
+                <h1 className="addInfoTitle">Inserir Receita</h1>
             </div>
 
             <form onSubmit={(evento) => {
