@@ -107,7 +107,7 @@ export const StyledRegisterRecipe = styled.div`
         aspect-ratio: 16/9;
         font-weight: 500;
         object-fit: cover;
-        width: 100%;
+        width: 400px;
         height: auto;
         border-radius: 8px;
     }

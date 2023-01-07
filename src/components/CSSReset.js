@@ -34,7 +34,7 @@ export const CSSReset = createGlobalStyle`
         width: 50px;
         height: 50px;
         font-size: 20px;
-        color: inherit;
+        color: #322624;
         position: fixed;
         bottom: 16px;
         right: 16px;
@@ -43,6 +43,11 @@ export const CSSReset = createGlobalStyle`
         box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
         border-radius: 50%;
         z-index: 99;
+        transition: 0.2s;
         cursor: pointer;
+  }
+
+  .add-food:hover {
+    background-color: #B9897C;
   }
 `;

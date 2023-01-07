@@ -86,6 +86,7 @@ export const TimelineStyle = styled.div`
         border: 2px solid #946D63;
         border-radius: 10px;
         transition: 0.2s;
+        color: #322624;
     }
 
     .tabsBox .tab:hover{

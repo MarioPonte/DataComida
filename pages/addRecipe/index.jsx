@@ -41,6 +41,11 @@ function addLi() {
     return listNode.innerHTML;
 }
 
+// Test if is a img url
+function isImgUrl(url) {
+    return /\.(jpg|jpeg|png|webp|avif|gif)$/.test(url);
+}
+
 export default function AddRecipe() {
 
     const formCadastro = useForm({
@@ -143,6 +148,7 @@ export default function AddRecipe() {
 
                     <div>
                         <input
+                            type="url"
                             placeholder="Imagem"
                             name="imagem"
                             value={formCadastro.values.imagem}
@@ -153,6 +159,11 @@ export default function AddRecipe() {
                     <button type="submit">
                         Cadastrar
                     </button>
+
+                    <div>
+                        { isImgUrl(formCadastro.values.imagem) != false ? <> <img className="thumbPreview" src={formCadastro.values.imagem}  /> </>  : null }
+                    </div>
+
                 </div>
             </form>
         </StyledRegisterRecipe>
