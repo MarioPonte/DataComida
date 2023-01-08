@@ -111,4 +111,35 @@ export const StyledRegisterRecipe = styled.div`
         height: auto;
         border-radius: 8px;
     }
+
+    @media only screen and (max-width: 440px) {
+        .addInfoTitle{
+            font-size: 40px;
+            margin: 20px;
+        }
+
+        input {
+            width: 90vw;
+        }
+
+        textarea {
+            width: 90vw;
+        }
+
+        select {
+            width: 90vw;
+        }
+
+        button[type="submit"] {
+            width: 90vw;
+        }
+
+        #list{
+            width: 90vw;
+        }
+
+        #textVal{
+            width: 10vw;
+        }
+    }
 `;
