@@ -139,7 +139,17 @@ export const StyledRegisterRecipe = styled.div`
         }
 
         #textVal{
-            width: 10vw;
+            width: 200px;
+        }
+    }
+
+    @media only screen and (max-width: 370px) {
+        .addInfoTitle{
+            font-size: 28px;
+        }
+
+        #textVal{
+            width: 100px;
         }
     }
 `;
