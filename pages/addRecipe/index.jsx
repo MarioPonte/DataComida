@@ -6,20 +6,17 @@ import config from "../../config.json";
 import { toast } from 'react-toastify';
 
 // Custom Hook
-function useForm(propsDoForm) {
+function useForm(propsDoForm){
     const [values, setValues] = React.useState(propsDoForm.initialValues);
     return {
         values,
         handleChange: (evento) => {
-            const value = evento.target.value || '';
+            const value = evento.target.value;
             const name = evento.target.name;
             setValues({
                 ...values,
                 [name]: value,
             });
-        },
-        clearForm() {
-            setValues({});
         }
     };
 }
@@ -99,8 +96,6 @@ export default function AddRecipe() {
                     .catch((err) => {
                         console.log(err);
                     })
-
-                formCadastro.clearForm();
             }}>
                 <div className="foodModal">
                     <hr></hr>
@@ -113,8 +108,8 @@ export default function AddRecipe() {
                             required />
                     </div>
 
-                    <select name="categoria" defaultValue="" onChange={formCadastro.handleChange} required>
-                        <option value="" disabled>
+                    <select defaultValue={"initialCat"} name="categoria" onChange={formCadastro.handleChange} required>
+                        <option value="initialCat" disabled>
                             Selecione uma categoria...
                         </option>
                         {categoryNames.map((categoryName) => {
