@@ -46,7 +46,7 @@ function isImgUrl(url) {
 export default function AddRecipe() {
 
     const formCadastro = useForm({
-        initialValues: { titulo: "", imagem: "", ingredientes: "", detalhes: "", tempo: "", categoria: "" }
+        initialValues: { titulo: "Tarte de Maçã", imagem: "https://ncultura.pt/wp-content/uploads/2020/02/cover-01.jpg", ingredientes: "", detalhes: "Coloque no forno", tempo: "00:31:00", categoria: "Bolos" }
     });
 
     const categoryNames = Object.keys(config.foods);
@@ -61,7 +61,7 @@ export default function AddRecipe() {
                 <button type="button" className="closePage" onClick={() => { router.push("/") }}>
                     <i className="fa-solid fa-xmark"></i>
                 </button>
-                <h1 className="addInfoTitle">Inserir Receita</h1>
+                <h1 className="addInfoTitle">Editar Receita</h1>
             </div>
 
             <form onSubmit={(evento) => {
@@ -108,7 +108,7 @@ export default function AddRecipe() {
                             required />
                     </div>
 
-                    <select defaultValue={"initialCat"} name="categoria" onChange={formCadastro.handleChange} required>
+                    <select defaultValue={formCadastro.values.categoria} name="categoria" onChange={formCadastro.handleChange} required>
                         <option value="initialCat" disabled>
                             Selecione uma categoria...
                         </option>

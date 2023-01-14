@@ -53,7 +53,7 @@ function Footer() {
     return (
         <FooterStyle>
             <Link className='marioSite' href="https://marioponte.github.io/Portfolio/" target="_blank"><LogoMario /></Link>
-            <footer>© Todos os direitos reservados a Mário Ponte / DataComida</footer>
+            <footer>© Todos os direitos reservados a Mário Ponte / DataComida 2023</footer>
         </FooterStyle>
     )
 }
