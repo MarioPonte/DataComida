@@ -45,13 +45,13 @@ function isImgUrl(url) {
 
 export default function AddRecipe() {
 
+    const router = useRouter();
+
     const formCadastro = useForm({
-        initialValues: { titulo: "Tarte de Maçã", imagem: "https://ncultura.pt/wp-content/uploads/2020/02/cover-01.jpg", ingredientes: "", detalhes: "Coloque no forno", tempo: "00:31:00", categoria: "Bolos" }
+        initialValues: { titulo: router.query.title, imagem: "https://ncultura.pt/wp-content/uploads/2020/02/cover-01.jpg", ingredientes: "", detalhes: "Coloque no forno", tempo: "00:31:00", categoria: "Bolos" }
     });
 
     const categoryNames = Object.keys(config.foods);
-
-    const router = useRouter();
 
 
     return (

@@ -3,6 +3,7 @@ import { RecipesStyle } from '../src/components/Recipes';
 import { useRouter } from "next/router";
 import supabase from "./api/supabase";
 import { toast } from 'react-toastify';
+import Link from "next/link";
 
 export default function Recipes(){
 
@@ -92,7 +93,17 @@ export default function Recipes(){
                     <div>
                         <button id="copyBtn" className="copyButton receiptButtons"><i className="fa-solid fa-print"></i> Copiar Receita</button>
                         <button id="print" className="receiptButtons" onClick={() => {window.print()}}><i className="fa-solid fa-print"></i> Imprimir Receita</button>
-                        <button className="receiptButtons" onClick={() => { router.push("/editRecipe"); }}><i className="fa-solid fa-pen"></i> Editar Receita</button>
+                        <Link
+                            className='<i className="fa-solid fa-pen"></i> Editar Receita'
+                            href={{
+                                pathname: "/editRecipe",
+                                query: {
+                                    title: router.query.title
+                                },
+                            }}>
+                                <i className="fa-solid fa-pen"></i> Editar Receita
+                        </Link>
+
                         <button className="receiptButtons" onClick={handleDelete}><i className="fa-solid fa-trash-can"></i> Apagar Receita</button>
                     </div>
                 </section>
