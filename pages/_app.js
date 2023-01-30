@@ -51,7 +51,7 @@ function Root({ Component, pageProps }) {
                 </Helmet>
                 <Component {...pageProps} />
 
-                <button className="add-food" onClick={() => { router.push("/addRecipe"); }}>
+                <button className="add-food" aria-label="Inserir Receita" onClick={() => { router.push("/addRecipe"); }}>
                     <i className="fa-solid fa-plus"></i>
                 </button>
             </ThemeProvider>

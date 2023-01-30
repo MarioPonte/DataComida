@@ -45,6 +45,28 @@ export const CSSReset = createGlobalStyle`
         z-index: 99;
         transition: 0.2s;
         cursor: pointer;
+
+        &:hover::after{
+          opacity: 1;
+          pointer-events: all;
+        }
+
+        &::after{
+          white-space: nowrap;
+          box-shadow: 0 0 5px 0 rgba(0,0,0,0.3);
+          pointer-events: none;
+          transition: .2s;
+          opacity: 0;
+          content: attr(aria-label);
+          background-color: ${({ theme }) => theme.textColorBase};
+          color: ${({ theme }) => theme.backgroundBase};
+          border-radius: 5px;
+          padding: 2px 6px 2px 6px;
+          font-size: 12px;
+          position: absolute;
+          right: 96%;
+          margin-right: 12px;
+        }
   }
 
   .add-food:hover {
