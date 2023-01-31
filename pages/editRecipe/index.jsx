@@ -48,7 +48,7 @@ export default function AddRecipe() {
     const router = useRouter();
 
     const formCadastro = useForm({
-        initialValues: { titulo: router.query.title, imagem: "https://ncultura.pt/wp-content/uploads/2020/02/cover-01.jpg", ingredientes: "", detalhes: "Coloque no forno", tempo: "00:31:00", categoria: "Bolos" }
+        initialValues: { titulo: router.query.title, imagem: router.query.image, ingredientes: "", detalhes: router.query.details, tempo: router.query.time, categoria: "Bolos" }
     });
 
     const categoryNames = Object.keys(config.foods);
@@ -134,6 +134,8 @@ export default function AddRecipe() {
                     </div>
 
                     <ul name="lista" id="list">
+                        <li>1 colher de chá</li>
+                        <li>2kg de farinha</li>
                     </ul>
 
                     <div>

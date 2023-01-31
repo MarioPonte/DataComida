@@ -46,6 +46,25 @@ export const CSSReset = createGlobalStyle`
         transition: 0.2s;
         cursor: pointer;
 
+        &:hover::before{
+          opacity: 1;
+          pointer-events: all;
+        }
+
+        &::before{
+          white-space: nowrap;
+          pointer-events: none;
+          transition: .2s;
+          opacity: 0;
+          top: 32%;
+          right: 106%;
+          position: absolute;
+          content: "";
+          border-top: 5px solid transparent;
+          border-left: 7px solid ${({ theme }) => theme.textColorBase};
+          border-bottom: 5px solid transparent;
+        }
+
         &:hover::after{
           opacity: 1;
           pointer-events: all;
@@ -53,7 +72,6 @@ export const CSSReset = createGlobalStyle`
 
         &::after{
           white-space: nowrap;
-          box-shadow: 0 0 5px 0 rgba(0,0,0,0.3);
           pointer-events: none;
           transition: .2s;
           opacity: 0;

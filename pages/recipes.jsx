@@ -98,7 +98,10 @@ export default function Recipes(){
                             href={{
                                 pathname: "/editRecipe",
                                 query: {
-                                    title: router.query.title
+                                    title: router.query.title,
+                                    image: router.query.image,
+                                    details: router.query.details,
+                                    time: router.query.time
                                 },
                             }}>
                                 <i className="fa-solid fa-pen"></i> Editar Receita

@@ -3,9 +3,12 @@ import React, { useEffect, useState } from 'react';
 import config from "../../../config.json";
 import supabase from '../../../pages/api/supabase';
 import Link from "next/link";
+import { useRouter } from 'next/router';
 
 
 export function Timeline({ searchValue, ...props }) {
+
+    const router = useRouter();
 
     // Welcome Message
     var now = new Date();
@@ -142,6 +145,10 @@ export function Timeline({ searchValue, ...props }) {
                     </div>
                 )
             })}
+
+<button className="add-food" aria-label="Inserir Receita" onClick={() => { router.push("/addRecipe"); }}>
+                    <i className="fa-solid fa-plus"></i>
+                </button>
         </TimelineStyle>
     )
 }
