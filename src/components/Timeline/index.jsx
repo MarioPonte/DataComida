@@ -132,7 +132,8 @@ export function Timeline({ searchValue, ...props }) {
                                                 image: food.image,
                                                 ingredients: food.ingredients,
                                                 details: food.details,
-                                                time: food.time
+                                                time: food.time,
+                                                category: food.category
                                             },
                                         }}>
                                             <img className='foodImg' src={food.image} alt="" />
@@ -146,7 +147,7 @@ export function Timeline({ searchValue, ...props }) {
                 )
             })}
 
-<button className="add-food" aria-label="Inserir Receita" onClick={() => { router.push("/addRecipe"); }}>
+                <button className="add-food" aria-label="Inserir Receita" onClick={() => { router.push("/addRecipe"); }}>
                     <i className="fa-solid fa-plus"></i>
                 </button>
         </TimelineStyle>

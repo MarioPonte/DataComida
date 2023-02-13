@@ -53,12 +53,8 @@ export default function Recipes(){
                 .delete()
                 .eq("name", router.query.title)
 
-            if(error){
-                console.log(error);
-            }
-            if(data){
-                console.log(data);
-            }
+            if(error) console.log(error);
+            if(data) console.log(data);
 
             toast.success('Receita excluida com sucesso!', {
                 position: "top-right",
@@ -76,14 +72,13 @@ export default function Recipes(){
     }
 
     return (
-        <>
             <RecipesStyle>
                 <section className="imgSection">
-                    {/* <a className="backBtn" href="/"><i className="fa-solid fa-arrow-left"></i></a> */}
                     <img className="imgRecipe" src={router.query.image} alt="" srcSet="" />
                 </section>
                 <section className="recipe">
                     <h1 className="recipeTitle">{router.query.title}</h1>
+                    <h3>{router.query.category}</h3>
                     <span className="recipeTime"><i className="fa-solid fa-clock"></i> {timeMessage}</span>
                     <h2 className="ingredientsTitle">Ingredientes</h2>
                     <ul id="listVal" className="ingredientsList" dangerouslySetInnerHTML={{__html: router.query.ingredients}}>
@@ -94,14 +89,14 @@ export default function Recipes(){
                         <button id="copyBtn" className="copyButton receiptButtons"><i className="fa-solid fa-print"></i> Copiar Receita</button>
                         <button id="print" className="receiptButtons" onClick={() => {window.print()}}><i className="fa-solid fa-print"></i> Imprimir Receita</button>
                         <Link
-                            className='<i className="fa-solid fa-pen"></i> Editar Receita'
                             href={{
                                 pathname: "/editRecipe",
                                 query: {
                                     title: router.query.title,
                                     image: router.query.image,
                                     details: router.query.details,
-                                    time: router.query.time
+                                    time: router.query.time,
+                                    category: router.query.category
                                 },
                             }}>
                                 <i className="fa-solid fa-pen"></i> Editar Receita
@@ -111,6 +106,5 @@ export default function Recipes(){
                     </div>
                 </section>
             </RecipesStyle>
-        </>
     )
 }

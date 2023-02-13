@@ -48,7 +48,7 @@ export default function AddRecipe() {
     const router = useRouter();
 
     const formCadastro = useForm({
-        initialValues: { titulo: router.query.title, imagem: router.query.image, ingredientes: "", detalhes: router.query.details, tempo: router.query.time, categoria: "Bolos" }
+        initialValues: { titulo: router.query.title, imagem: router.query.image, ingredientes: "", detalhes: router.query.details, tempo: router.query.time, categoria: router.query.category }
     });
 
     const categoryNames = Object.keys(config.foods);
