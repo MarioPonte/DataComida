@@ -78,7 +78,7 @@ export default function Recipes(){
                 </section>
                 <section className="recipe">
                     <h1 className="recipeTitle">{router.query.title}</h1>
-                    <h3>{router.query.category}</h3>
+                    <span className="recipeCategory">{router.query.category}</span>
                     <span className="recipeTime"><i className="fa-solid fa-clock"></i> {timeMessage}</span>
                     <h2 className="ingredientsTitle">Ingredientes</h2>
                     <ul id="listVal" className="ingredientsList" dangerouslySetInnerHTML={{__html: router.query.ingredients}}>
@@ -89,6 +89,7 @@ export default function Recipes(){
                         <button id="copyBtn" className="copyButton receiptButtons"><i className="fa-solid fa-print"></i> Copiar Receita</button>
                         <button id="print" className="receiptButtons" onClick={() => {window.print()}}><i className="fa-solid fa-print"></i> Imprimir Receita</button>
                         <Link
+                            className="receiptButtons"
                             href={{
                                 pathname: "/editRecipe",
                                 query: {

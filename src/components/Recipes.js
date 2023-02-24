@@ -38,11 +38,19 @@ export const RecipesStyle = styled.div`
         margin-bottom: 10px;
     }
 
+    .recipeCategory{
+        background-color: ${({ theme }) => theme.borderBase};
+        color: ${({ theme }) => theme.backgroundBase};
+        padding: 4px 18px 4px 18px;
+        border-radius: 100vw;
+        font-weight: 500;
+    }
+
     .recipeTime{
         color: ${({ theme }) => theme.borderBase};
         font-weight: 600;
         opacity: 0.75;
-        margin-bottom: 20px;
+        margin: 0px 20px 20px 20px;
         display: inline-block;
     }
 
@@ -81,6 +89,16 @@ export const RecipesStyle = styled.div`
     @media print{
         .receiptButtons{
             display: none !important;
+        }
+
+        .imgRecipe{
+            width: 200px;
+            height: 150px;
+            border-radius: 20px;
+        }
+
+        .recipeTitle{
+            font-size: 40px;
         }
     }
 `;
