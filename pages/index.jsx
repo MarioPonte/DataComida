@@ -5,6 +5,7 @@ import { Timeline } from '../src/components/Timeline';
 import { FooterStyle } from '../src/components/Footer';
 import { foodService } from "./api/supabase";
 import Link from "next/link";
+import moment from 'moment';
 
 const GlobalStyle = createGlobalStyle`
     *{
@@ -25,6 +26,7 @@ export default function HomePage() {
     const [categories, setCategories] = React.useState({});
 
     React.useEffect(() => {
+
         //console.log("useEffect");
         service.getAllFoods()
             .then((dados) => {
@@ -50,10 +52,18 @@ export default function HomePage() {
 }
 
 function Footer() {
+
+    const [year, setYear] = React.useState();
+
+    React.useEffect(() => {
+        setYear(moment().year());
+    }, []);
+
+
     return (
         <FooterStyle>
             <Link className='marioSite' href="https://marioponte.github.io/Portfolio/" target="_blank"><LogoMario /></Link>
-            <footer>&copy; Todos os direitos reservados a Mário Ponte / DataComida 2023</footer>
+            <footer>&copy; Todos os direitos reservados a Mário Ponte / DataComida {year}</footer>
         </FooterStyle>
     )
 }
